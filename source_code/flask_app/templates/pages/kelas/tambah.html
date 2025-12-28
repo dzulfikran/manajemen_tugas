@@ -1,0 +1,28 @@
+{% extends "layouts/base.html" %}
+{% block content %}
+
+<h3 class="text-2xl font-semibold mb-4">Tambah Kelas</h3>
+
+<form method="POST" class="space-y-4">
+
+    <div>
+        <label class="form-label">Nama Kelas</label>
+        <input type="text" name="nama_kelas" class="form-control" required>
+    </div>
+
+    <div>
+        <label class="form-label">ID Mata Kuliah</label>
+        <input type="text" name="id_matakuliah" class="form-control" required>
+    </div>
+
+    <div>
+        <label class="form-label">ID Dosen</label>
+        <input type="text" name="id_dosen" class="form-control" required>
+    </div>
+
+    <button class="btn btn-primary">Simpan</button>
+    <a href="{{ url_for('kelas.index') }}" class="btn btn-secondary">Kembali</a>
+
+</form>
+
+{% endblock %}

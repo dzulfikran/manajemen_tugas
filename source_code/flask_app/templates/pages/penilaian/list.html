@@ -1,0 +1,33 @@
+<table class="table table-striped table-bordered dark:text-white">
+    <thead class="table-dark">
+        <tr>
+            <th>#</th>
+            <th>ID Penyerahan</th>
+            <th>Nilai</th>
+            <th class="text-center">Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if daftar_penilaian %}
+            {% for d in daftar_penilaian %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ d.id_penyerahan }}</td>
+                    <td>{{ d.nilai }}</td>
+                    <td class="text-center">
+                        <a href="{{ url_for('penilaian.detail', id_penyerahan=d.id_penyerahan) }}"
+                           class="btn btn-sm btn-primary">
+                            Detail
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="6" class="text-center py-4">
+                    Tidak ada tugas yang sudah dinilai.
+                </td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>

@@ -1,0 +1,52 @@
+{% extends "layouts/base.html" %}
+{% block content %}
+
+<h3 class="text-2xl font-semibold mb-4">Tambah Tugas</h3>
+
+<form method="POST" class="space-y-4">
+
+    <div>
+        <label class="form-label">Deskripsi Tugas</label>
+        <textarea
+            name="deskripsi"
+            rows="4"
+            placeholder="Tuliskan deskripsi tugas di sini..."
+            required
+            class="w-full rounded-lg border border-gray-300 px-3 py-2 
+                text-sm resize-y focus:border-blue-500 
+                focus:ring-2 focus:ring-blue-200 outline-none text-black"
+        ></textarea>
+    </div>
+
+    <div>
+        <label class="form-label">Nama Tugas</label>
+        <input type="text" name="nama_tugas" class="form-control" required>
+    </div>
+
+    <div class="mb-4">
+        <label class="form-label">
+            Batas Waktu
+        </label>
+        <input 
+            type="datetime-local"
+            name="batas_waktu"
+            class="form-control"
+        >
+    </div>
+
+    <div>
+        <label class="form-label">Nama Mata Kuliah</label>
+        <input type="text" name="nama_matakuliah" class="form-control">
+    </div>
+
+    <div>
+        <label class="form-label">ID Kelas</label>
+        <input type="text" name="id_kelas" class="form-control">
+    </div>
+
+    <button class="btn btn-primary">Simpan</button>
+    <a href="{{ url_for('tugas.index') }}" class="btn btn-secondary">Kembali</a>
+
+</form>
+
+{% endblock %}

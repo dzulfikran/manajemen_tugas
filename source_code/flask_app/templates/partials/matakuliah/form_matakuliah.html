@@ -1,0 +1,24 @@
+<form action="" method="post">
+    <div>
+        <label for="kode">Kode</label>
+        <input type="text" name="kode" id="kode" value="{{ matakuliah.kode if matakuliah}}">
+    </div>
+    <div>
+    <div>
+        <label for="nama">Nama</label>
+        <input type="text" name="nama" id="nama" value="{{ matakuliah.nama if matakuliah}}">
+    </div>
+    <div>
+        <label for="sks">SKS</label>
+        <input type="number" name="sks" id="sks" value="{{ matakuliah.sks if matakuliah}}">
+    </div>
+    <div>
+        <label for="deskripsi">Deskripsi</label>
+        <input type="text" name="deskripsi" id="deskripsi" value="{{ matakuliah.deskripsi if matakuliah}}">
+    </div>
+    <div>
+        <label for="semester">Semester</label>
+        <input type="text" name="semester" id="semester" value="{{ matakuliah.semester if matakuliah}}">
+    </div>
+    <button type="submit">Simpan</button>
+</form>

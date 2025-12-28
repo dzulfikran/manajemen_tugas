@@ -1,0 +1,24 @@
+{% extends "layouts/base.html" %}
+{% block content %}
+<h3 class="text-xl font-semibold mb-4">Beri Nilai</h3>
+
+<form method="post"
+      action="{{ url_for('penilaian.simpan', id_penyerahan=id_penyerahan) }}">
+    
+    <div class="mb-3">
+        <label class="form-label">Nilai</label>
+        <input type="number"
+               name="nilai"
+               class="form-control"
+               min="0"
+               max="100"
+               required
+               value="{{ penilaian.nilai if penilaian else '' }}">
+    </div>
+
+    <button class="btn btn-success">Simpan</button>
+    <a href="{{ url_for('penyerahan.index') }}" class="btn btn-secondary">
+        Kembali
+    </a>
+</form>
+{% endblock %}

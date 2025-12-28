@@ -1,0 +1,31 @@
+{% extends "layouts/base.html" %}
+{% block content %}
+
+<div class="flex justify-between items-center mb-4">
+    <h3 class="text-2xl font-semibold">Daftar Mata Kuliah</h3>
+
+    <a href="{{ url_for('matakuliah.tambah') }}"
+       class="btn btn-primary">
+        Tambah Mata Kuliah
+    </a>
+</div>
+
+<!-- Form Pencarian -->
+<form hx-get="{{ url_for('matakuliah.index') }}"
+      hx-target="#matakuliah-list"
+      hx-trigger="keyup delay:400ms"
+      class="mb-4">
+
+    <input type="text"
+           name="q"
+           class="form-control"
+           placeholder="Cari matakuliah..."
+           value="{{ request.args.get('q','') }}">
+</form>
+
+<!-- LIST CONTENT -->
+<div id="matakuliah-list">
+    {% include "pages/matakuliah/list.html" %}
+</div>
+
+{% endblock %}

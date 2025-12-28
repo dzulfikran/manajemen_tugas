@@ -1,0 +1,20 @@
+<div>
+  <form
+    id="form-pencarian"
+    hx-get="{{ url_for('matakuliah.daftar_matakuliah') }}"
+    hx-trigger="submit"
+    hx-target="#daftar-matakuliah"
+    hx-swap="innerHTML transition:false"
+    hx-push-url="true"
+    hx-include="#form-filter"
+  >
+    <input
+      type="text"
+      name="nama"
+      placeholder="Nama matakuliah ..."
+      value="{{ params['nama'] if params['nama']}}"
+    />
+    <button type="submit">Cari</button>
+    <a href="{{ url_for('matakuliah.daftar_matakuliah') }}">reset</a>
+  </form>
+</div>

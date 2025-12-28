@@ -1,0 +1,14 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<a href="{{ url_for('matakuliah.daftar_matakuliah') }}">kembali</a>
+<h1>Detail matakuliah</h1>
+<p>{{ matakuliah.nama }}</p>
+
+<form action="{{ url_for('main.hapus_matakuliah', id=matakuliah.id) }}" method="post">
+    <button type="submit">Hapus</button>
+</form>
+
+{% include "partials/pesan.html" %}
+{% include "partials/matakuliah/form_matakuliah.html" %}
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "layouts/base.html" %}
+{% block content %}
+
+<h3 class="text-2xl font-semibold mb-4">Edit Mahasiswa</h3>
+
+<form method="POST" class="space-y-4">
+
+    <div>
+        <label class="form-label">Nama Mahasiswa</label>
+        <input type="text" name="nama_mahasiswa" class="form-control"
+               value="{{ mahasiswa.nama_mahasiswa }}" required>
+    </div>
+
+    <div>
+        <label class="form-label">NIM</label>
+        <input type="text" name="nim" class="form-control"
+               value="{{ mahasiswa.nim }}" required>
+    </div>
+
+    <div>
+        <label class="form-label">Nomor HP</label>
+        <input type="text" name="no_hp" class="form-control"
+               value="{{ mahasiswa.no_hp }}">
+    </div>
+
+    <div>
+        <label class="form-label">Alamat</label>
+        <input type="text" name="alamat" class="form-control"
+               value="{{ mahasiswa.alamat }}">
+    </div>
+
+    <button class="btn btn-success">Update</button>
+    <a href="{{ url_for('mahasiswa.index') }}" class="btn btn-secondary">Kembali</a>
+
+</form>
+
+{% endblock %}

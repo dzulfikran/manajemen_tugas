@@ -1,0 +1,19 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<h1>Mata Kuliah</h1>
+
+{% include "partials/pesan.html" %}
+{% include "partials/matakuliah/form_matakuliah.html" %}
+{% include "partials/matakuliah/form_cari_matakuliah.html" %}
+
+{% include "partials/matakuliah/form_filter_matakuliah.html" %}
+
+
+
+
+<div id="daftar-matakuliah">
+    {% include "partials/matakuliah/daftar_matakuliah.html" %}
+</div>
+
+{% endblock %}

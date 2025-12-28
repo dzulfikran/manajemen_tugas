@@ -1,0 +1,25 @@
+<h2>filter matakuliah</h2>
+<form
+  id="form-filter"
+  hx-get="{{ url_for('matakuliah.daftar_matakuliah') }}"
+  hx-target="#daftar-matakuliah"
+  hx-trigger="change delay:300ms, keyup delay:300ms"
+  hx-swap="innerHTML"
+  hx-push-url="true"
+  hx-include="#form-pencarian, #form-filter"
+>
+  <input
+    type="number"
+    name="sks"
+    id="sks"
+    placeholder="SKS ..."
+    value="{{ params.sks if params.sks }}"
+  />
+  <input
+    type="number"
+    name="semester"
+    id="semester"
+    placeholder="Semester ..."
+    value="{{ params.semester if params.semester }}"
+  />
+</form>

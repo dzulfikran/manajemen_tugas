@@ -1,0 +1,16 @@
+<div>
+    {% if daftar_matakuliah %}
+    {% for matakuliah in daftar_matakuliah %}
+        <div>
+            <h3>Nama : {{ matakuliah.nama }}</h3>
+            <p>Kode : {{ matakuliah.kode }}</p>
+            <p>SKS : {{ matakuliah.sks }}</p>
+            <p>Deskripsi : {{ matakuliah.deskripsi }}</p>
+            <p>Semester : {{ matakuliah.semester }}</p>
+            <a href="{{ url_for('main.detail_matakuliah', id=matakuliah.id) }}">detail</a>
+        </div>
+    {% endfor %}
+    {% else %}
+        <p>Tidak ada Mata Kuliah</p>
+    {% endif %}
+</div>

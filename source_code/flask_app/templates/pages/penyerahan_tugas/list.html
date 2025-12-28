@@ -1,0 +1,43 @@
+<table class="table table-striped table-bordered dark:text-white">
+    <thead class="table-dark">
+        <tr>
+            <th>#</th>
+            <th>ID Tugas</th>
+            <th>Waktu Penyerahan</th>
+            <th>Status</th>
+            <th class="text-center">Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if daftar_penyerahan_tugas %}
+            {% for d in daftar_penyerahan_tugas %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ d.id_tugas }}</td>
+                    <td>{{ d.waktu_penyerahan.strftime('%Y-%m-%d %H:%M') if d.waktu_penyerahan else '-' }}</td>
+                    <td>{{ d.status }}</td>
+                    
+                    <td class="text-center space-x-1">
+                        <a href="{{ url_for('penyerahan.detail', id=d.id_tugas) }}"
+                        class="btn btn-sm btn-primary">
+                            Detail
+                        </a>
+                        {% if d.status == "belum_dinilai" %}
+                        <a href="{{ url_for('penilaian.form', id_penyerahan=d.id) }}"
+                        class="btn btn-sm btn-success">
+                            Beri Nilai
+                        </a>
+                        {% endif %}
+                    </td>
+                    
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="6" class="text-center py-4">
+                    Tidak ada tugas yang sudah diserahkan.
+                </td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>

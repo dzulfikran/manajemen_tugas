@@ -1,0 +1,31 @@
+{% extends "layouts/base.html" %}
+{% block content %}
+
+<div class="flex justify-between items-center mb-4">
+    <h3 class="text-2xl font-semibold">Daftar Kelas</h3>
+
+    <a href="{{ url_for('kelas.tambah') }}"
+       class="btn btn-primary">
+        Tambah Kelas
+    </a>
+</div>
+
+<!-- Form Pencarian -->
+<form hx-get="{{ url_for('kelas.index') }}"
+      hx-target="#kelas-list"
+      hx-trigger="keyup delay:400ms"
+      class="mb-4">
+
+    <input type="text"
+           name="q"
+           class="form-control"
+           placeholder="Cari kelas..."
+           value="{{ params.q if params is defined }}">
+</form>
+
+<!-- LIST CONTENT -->
+<div id="kelas-list">
+    {% include "pages/kelas/list.html" %}
+</div>
+
+{% endblock %}

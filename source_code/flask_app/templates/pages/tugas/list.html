@@ -1,0 +1,64 @@
+<table class="table table-striped table-bordered dark:text-white">
+    <thead class="table-dark">
+        <tr>
+            <th>#</th>
+            <th>Tugas</th>
+            <th>Mata Kuliah</th>
+            <th>Batas Waktu</th>
+            <th>Status</th>
+            <th class="text-center">Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if daftar_tugas %}
+            {% for d in daftar_tugas %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ d.nama_tugas }}</td>
+                    <td>{{ d.nama_matakuliah }}</td>
+                    <td>{{ d.batas_waktu }}</td>
+                    <td>{{ d.status }}</td>
+                    <td class="text-center">
+                        <a href="{{ url_for('tugas.detail', id=d.id) }}"
+                           class="btn btn-sm btn-primary">
+                            Detail
+                        </a>
+
+                        {% if d.status != "selesai" %}
+                        <a href="{{ url_for('tugas.edit', id=d.id) }}"
+                           class="btn btn-sm btn-warning">
+                            Edit
+                        </a>
+
+                        <form method="POST"
+                              action="{{ url_for('tugas.hapus', id=d.id) }}"
+                              style="display:inline;"
+                              onsubmit="return confirm('Hapus tugas ini?')">
+                            <button class="btn btn-sm btn-danger">
+                                Hapus
+                            </button>
+                        </form>
+                        {% endif %}
+
+                        {% if d.status == "aktif" %}
+                        <form method="POST"
+                              action="{{ url_for('penyerahan.serahkan_tugas', id_tugas=d.id) }}"
+                              style="display:inline;"
+                              onsubmit="return confirm('Serahkan tugas ini?')">
+                            <button class="btn btn-sm btn-success">
+                                Serahkan
+                            </button>
+                        </form>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="6" class="text-center py-4">
+                    Tidak ada data Tugas.
+                </td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>

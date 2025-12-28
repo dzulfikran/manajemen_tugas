@@ -1,0 +1,11 @@
+{% extends "layouts/base.html" %}
+{% from "components/cards.html" import card %}
+
+{% block content %}
+<h1>Index</h1>
+{% if daftar_matakuliah %}
+    {% for matakuliah in daftar_matakuliah %}
+        {{ card(matakuliah) }}
+    {% endfor %}
+{% endif %}
+{% endblock %}

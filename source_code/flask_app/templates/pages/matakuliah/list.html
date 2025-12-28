@@ -1,0 +1,46 @@
+<table class="table table-striped table-bordered dark:text-white">
+    <thead class="table-dark">
+        <tr>
+            <th>#</th>
+            <th>Kode Mata Kuliah</th>
+            <th>Nama Mata Kuliah</th>
+            <th>SKS</th>
+            <th>Semester</th>
+            <th class="text-center">Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if daftar_matakuliah %}
+            {% for d in daftar_matakuliah %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ d.kode_matakuliah }}</td>
+                    <td>{{ d.nama_matakuliah }}</td>
+                    <td>{{ d.sks }}</td>
+                    <td>{{ d.semester }}</td>
+                    <td class="text-center">
+                        <a href="{{ url_for('matakuliah.edit', id=d.id) }}"
+                           class="btn btn-sm btn-warning">
+                            Edit
+                        </a>
+
+                        <form method="POST"
+                              action="{{ url_for('matakuliah.hapus', id=d.id) }}"
+                              style="display:inline;"
+                              onsubmit="return confirm('Hapus matakuliah ini?')">
+                            <button class="btn btn-sm btn-danger">
+                                Hapus
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="6" class="text-center py-4">
+                    Tidak ada data Mata Kuliah.
+                </td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
